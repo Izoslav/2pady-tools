@@ -76,4 +76,4 @@ if __name__ == '__main__':
   for root, dirs, files in os.walk(args.directory):
     for file in files:
       if file.endswith('.wav'):
-        convert(file, root, args.output, args.quality)
+        convert(file, root, args.output + '/' + root, args.quality)
