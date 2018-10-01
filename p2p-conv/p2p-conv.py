@@ -75,5 +75,10 @@ if __name__ == '__main__':
   print('Converting WAV files...')
   for root, dirs, files in os.walk(args.directory):
     for file in files:
+      if not os.path.exists(args.output + '/' + root):
+        os.makedirs(args.output, exist_ok=True)
+
       if file.endswith('.wav'):
-        convert(file, root, args.output + '/' + root, args.quality)
+        path = os.path.sep.join(root.split(os.path.sep)[1:])
+        output = args.output + os.path.sep + path
+        convert(file, root, output, args.quality)
